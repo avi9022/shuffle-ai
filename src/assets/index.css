@@ -1,0 +1,24 @@
+* {
+  --nav-height: 100px;
+}
+
+body {
+  font-family: Sans-serif;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.heading-container {
+  background-image: url('./images/hero.jpg');
+  background-repeat: no-repeat;
+}
+
+.fs-xlg {
+  font-size: 48px;
+}
+
+.pointer {
+  cursor: pointer;
+}
