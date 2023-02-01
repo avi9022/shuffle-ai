@@ -1,0 +1,11 @@
+.hero {
+  padding-top: 150px;
+  height: calc(90vh - var(--nav-height));
+  overflow: hidden;
+}
+
+.hero-img-container img {
+  object-fit: contain;
+  position: relative;
+  bottom: 60px;
+}
