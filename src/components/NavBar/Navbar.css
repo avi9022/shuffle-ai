@@ -1,0 +1,21 @@
+.top-nav {
+  height: var(--nav-height);
+}
+
+.top-nav li::after,
+.top-nav li.active::after {
+  opacity: 0;
+  content: '';
+  height: 1px;
+  background-color: #fff;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.top-nav li:hover::after,
+.top-nav li.active::after {
+  opacity: 1;
+}
