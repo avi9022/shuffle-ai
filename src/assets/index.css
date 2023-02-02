@@ -22,3 +22,7 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.rounded-md {
+  border-radius: 0.7rem;
+}
