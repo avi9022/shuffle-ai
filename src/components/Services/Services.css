@@ -1,0 +1,42 @@
+.services {
+  background-color: #f3f3f3;
+  padding-top: 100px;
+}
+
+.multi-line-container {
+  overflow: hidden;
+  background-color: #fff;
+  height: 40px;
+  padding-inline-start: 10px;
+  padding-inline-end: 50px;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  animation: move 6s infinite;
+}
+
+.line {
+  position: relative;
+  animation: white-out 5s infinite;
+}
+
+@keyframes move {
+  25% {
+    transform: translatey(-45px);
+    opacity: 1;
+  }
+  50% {
+    transform: translatey(-85px);
+  }
+  75% {
+    transform: translatey(-130px);
+  }
+}
+
+.icon {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(145deg, rgba(42, 52, 96, 1) 0%, rgba(96, 51, 46, 1) 100%);
+}
