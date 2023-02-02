@@ -4,7 +4,7 @@ import img from '../../assets/images/logo.svg'
 
 export const Navbar: FunctionComponent = () => {
   return (
-    <div className="top-nav ps-3 text-white sticky-top">
+    <div className="top-nav ps-3 text-white fixed-top">
       <div className="row align-items-center">
         <div className="d-inline col-3 col-lg-1 logo p-4">
           <img src={img} alt="" width={150} />
