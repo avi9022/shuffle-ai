@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { scrollIntoView } from '../../services/utils'
+import { scrollIntoView } from '../../shared/services/utils'
 
 import img from '../../assets/images/Mask-Group-12.png'
 import './Hero.css'
