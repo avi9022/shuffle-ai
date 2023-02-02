@@ -1,5 +1,5 @@
 * {
-  --nav-height: 100px;
+  --nav-height: 115px;
 }
 
 body {
@@ -20,4 +20,12 @@ body {
 
 .rounded-md {
   border-radius: 0.7rem;
+}
+
+.border-gray {
+  border-color: #5d5d5d;
+}
+
+.resize-none {
+  resize: none;
 }
