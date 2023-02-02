@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react'
 import './Hero.css'
 import img from '../../assets/images/Mask-Group-12.png'
+import { scrollIntoView } from '../../services/utils'
 
 export const Hero: FunctionComponent = () => {
   return (
@@ -15,7 +16,9 @@ export const Hero: FunctionComponent = () => {
               media accounts, Spotify playlists, YouTube videos, and more. Additionally, Shuffle also helps its clients with music marketing by providing them promotions to music streaming services
               like Spotify and Apple Music.
             </div>
-            <button className="border border-white text-white bg-transparent px-4 py-3 rounded-1">Start Generating</button>
+            <button className="border border-white text-white bg-transparent px-4 py-3 rounded-1" onClick={() => scrollIntoView('services')}>
+              Start Generating
+            </button>
           </div>
           <div className="col-6 hero-img-container">
             <img src={img} alt="" />

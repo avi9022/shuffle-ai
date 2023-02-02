@@ -7,7 +7,7 @@ export const Services: FunctionComponent = () => {
   const lines = ['Thumbnails for youtube', 'Post for new single', 'Text for ads', '15 second video out of your song']
 
   return (
-    <section className="services pb-5">
+    <section id="services" className="services pb-5">
       <div className="container text-center">
         <div className="row pb-5">
           <div className="fs-1 pb-2">Services</div>
