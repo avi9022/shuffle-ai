@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'react'
-import './Hero.css'
-import img from '../../assets/images/Mask-Group-12.png'
 import { scrollIntoView } from '../../services/utils'
+
+import img from '../../assets/images/Mask-Group-12.png'
+import './Hero.css'
 
 export const Hero: FunctionComponent = () => {
   return (

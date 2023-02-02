@@ -1,7 +1,9 @@
 .hero {
-  padding-top: 150px;
-  height: calc(90vh - var(--nav-height));
+  padding-top: calc(150px + var(--nav-height));
+  height: calc(90vh);
   overflow: hidden;
+  background-image: url('../../assets/images/hero.jpg');
+  background-repeat: no-repeat;
 }
 
 .hero-img-container img {

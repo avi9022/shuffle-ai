@@ -1,15 +1,11 @@
-import { Hero } from './components/Hero/Hero'
 import { Navbar } from './components/NavBar/Navbar'
-import { Services } from './components/Services/Services'
+import { Home } from './pages/Home/Home'
 
 function App() {
   return (
     <>
-      <div className="heading-container">
-        <Navbar />
-        <Hero />
-      </div>
-      <Services />
+      <Navbar />
+      <Home />
     </>
   )
 }
