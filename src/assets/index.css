@@ -29,3 +29,7 @@ body {
 .resize-none {
   resize: none;
 }
+
+.placeholder-gray::placeholder {
+  color: #5d5d5d;
+}
