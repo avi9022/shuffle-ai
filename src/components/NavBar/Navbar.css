@@ -1,5 +1,10 @@
 .top-nav {
   height: var(--nav-height);
+  transition: background-color 0.3s;
+}
+
+.nav-full {
+  background-color: var(--nav-full-bg);
 }
 
 .top-nav li::after,
