@@ -18,7 +18,7 @@ export const Services: FunctionComponent = () => {
             <div className="multi-line-container rounded">
               <div className="lines text-start">
                 {lines.map((line, idx) => (
-                  <div className="line" key={idx}>
+                  <div className="line text-truncate" key={idx}>
                     {line}
                   </div>
                 ))}
@@ -28,7 +28,7 @@ export const Services: FunctionComponent = () => {
         </div>
         <div className="row mb-5 text-start">
           {GenerationCards.map(({ icon, text, type }, idx) => (
-            <button className="col-4 p-2 pointer border-0" role="button" onClick={() => navigate(`/generator/${type}`)}>
+            <button className="col-12 col-md-6 col-lg-4 p-2 pointer border-0" role="button" onClick={() => navigate(`/generator/${type}`)}>
               <div key={idx}>
                 <div className="bg-white h-100 rounded-md border border-2">
                   <div className="d-flex gap-4 align-items-center ps-2">

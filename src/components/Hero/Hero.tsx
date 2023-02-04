@@ -9,7 +9,7 @@ export const Hero: FunctionComponent = () => {
     <section className="hero text-white">
       <div className="container">
         <div className="row">
-          <div className="col-6 ">
+          <div className="col-12 col-md-6">
             <div className="font-weight-bold fs-xlg pb-2">Shuffle Ai</div>
             <div className="subheading pb-2 fs-5">Elevating Music marketing to the next level with Technology, Algorithms & Data</div>
             <div className="description mb-5">
@@ -21,7 +21,7 @@ export const Hero: FunctionComponent = () => {
               Start Generating
             </button>
           </div>
-          <div className="col-6 hero-img-container">
+          <div className="col-6 d-none d-md-block hero-img-container">
             <img src={img} alt="" />
           </div>
         </div>
