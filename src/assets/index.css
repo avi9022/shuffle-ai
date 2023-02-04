@@ -1,6 +1,7 @@
 * {
   --nav-height: 115px;
   --nav-full-bg: rgba(50, 48, 62, 0.95);
+  --side-nav-bg: #34363a;
 }
 
 body {

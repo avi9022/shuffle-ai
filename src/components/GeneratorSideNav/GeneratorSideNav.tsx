@@ -2,6 +2,9 @@ import { FunctionComponent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GenerationCards } from '../../shared/consts/generation-types'
 import { generationType } from '../../types/generation'
+
+import './GeneratorSideNav.css'
+
 export const GeneratorSideNav: FunctionComponent = () => {
   const navigate = useNavigate()
   const getNavText = (type: string) => {
@@ -16,10 +19,15 @@ export const GeneratorSideNav: FunctionComponent = () => {
   }
   return (
     <nav>
-      <ul className="d-flex gap-4 flex-md-column gap-md-2 justify-content-center p-0">
-        {GenerationCards.filter((card) => card.type !== generationType.soon).map(({ type }) => (
+      <ul className="d-flex gap-4 flex-md-column gap-md-2 justify-content-center p-4">
+        {GenerationCards.filter((card) => card.type !== generationType.soon).map(({ type, icon }) => (
           <li className="list-group-item pointer text-capitalize" onClick={() => navigate(`/generator/${type}`)}>
-            {getNavText(type)}
+            <div className="d-flex gap-2 pb-1 align-items-center">
+              <div className="p-0">
+                <img src={icon} alt="" height={25} />
+              </div>
+              <div>{getNavText(type)}</div>
+            </div>
           </li>
         ))}
       </ul>
