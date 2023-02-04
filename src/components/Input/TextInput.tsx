@@ -10,8 +10,8 @@ interface InputTextProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const TextInput: FunctionComponent<InputTextProps> = ({ id, className, children, label, labelClassName, preventDBlock, inputClassName, ...props }) => {
   return (
     <label className={`mb-3 ${preventDBlock ? '' : 'd-block'} ${className}`}>
-      <p className={`mb-1 ${labelClassName}`}>{label}</p>
-      <input type="text" className={`form-control outline-0 text-truncate ${inputClassName}`} {...props}>
+      {label && <p className={`mb-1 ${labelClassName}`}>{label}</p>}
+      <input type="text" className={`form-control outline-0 text-truncate placeholder-gray ${inputClassName}`} {...props}>
         {children}
       </input>
     </label>

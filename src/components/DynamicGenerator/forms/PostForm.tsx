@@ -18,13 +18,8 @@ export const PostForm: FunctionComponent = () => {
     tone: '',
   })
 
-  const generate = (ev: React.FormEvent) => {
-    ev.preventDefault()
-    console.log(postFormValues)
-  }
-
   return (
-    <form onSubmit={generate}>
+    <div>
       <TextInput
         label="Name of the song"
         inputClassName="bg-transparent border-gray text-white"
@@ -70,9 +65,6 @@ export const PostForm: FunctionComponent = () => {
           setPostFormValues((prevState) => ({ ...prevState, tone: ev.target.value }))
         }}
       />
-      <button className="float-end border-0 text-white px-5 py-1 rounded-3" style={{ backgroundColor: '#139ebc' }}>
-        Generate
-      </button>
-    </form>
+    </div>
   )
 }
