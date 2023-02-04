@@ -16,7 +16,7 @@ export const GeneratorSideNav: FunctionComponent = () => {
   }
   return (
     <nav>
-      <ul className="p-0">
+      <ul className="d-flex gap-4 flex-md-column gap-md-2 justify-content-center p-0">
         {GenerationCards.filter((card) => card.type !== generationType.soon).map(({ type }) => (
           <li className="list-group-item pointer text-capitalize" onClick={() => navigate(`/generator/${type}`)}>
             {getNavText(type)}
