@@ -12,7 +12,7 @@ export const TextAreaInput: FunctionComponent<InputTextProps> = ({ id, className
   return (
     <label className={`mb-3 ${preventDBlock ? '' : 'd-block'} ${className}`}>
       <p className={`mb-1 ${labelClassName}`}>{label}</p>
-      <textarea rows={rows || 5} className={`form-control resize-none outline-0 text-truncate ${inputClassName}`} {...props}>
+      <textarea rows={rows || 5} className={`form-control resize-none outline-0 text-truncate placeholder-gray ${inputClassName}`} {...props}>
         {children}
       </textarea>
     </label>

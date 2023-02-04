@@ -47,7 +47,7 @@ export const GenerationCards: GenerationCard[] = [
   {
     icon: thumbnails,
     text: 'Generate - Thumbnails for Youtube',
-    type: generationType.thumbnail,
+    type: generationType.youtube,
   },
   {
     icon: comingSoon,

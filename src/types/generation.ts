@@ -11,6 +11,6 @@ export enum generationType {
   ad = 'ad',
   video = 'video',
   cover = 'cover',
-  thumbnail = 'thumbnail',
+  youtube = 'youtube',
   soon = 'soon',
 }
