@@ -9,7 +9,6 @@ export const Navbar: FunctionComponent = () => {
   useEffect(() => {
     if (!navRef.current) return
     window.onscroll = () => {
-      console.log('here', window.pageYOffset)
       if (window.pageYOffset >= 115) {
         navRef.current!.classList.add('nav-full')
       } else {

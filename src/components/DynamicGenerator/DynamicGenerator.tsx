@@ -8,7 +8,6 @@ import { VideoForm } from './forms/VideoForm'
 
 export const DynamicGenerator: FunctionComponent = () => {
   const { type } = useParams()
-  console.log(type)
   const getForm = () => {
     switch (type) {
       case generationType.post:
@@ -28,7 +27,7 @@ export const DynamicGenerator: FunctionComponent = () => {
   }
 
   return (
-    <form className="d-flex flex-column justify-content-between h-100">
+    <form className="d-flex flex-column justify-content-between h-100 p-4">
       {getForm()}
       {type && (
         <button className="align-self-end border-0 text-white px-5 py-1 rounded-3" style={{ backgroundColor: '#139ebc' }}>
