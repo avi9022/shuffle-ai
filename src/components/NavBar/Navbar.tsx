@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import './Navbar.css'
-import img from '../../assets/images/logo.svg'
 import { useNavigate } from 'react-router-dom'
+import img from '../../assets/images/logo.svg'
+import './Navbar.css'
 
 export const Navbar: FunctionComponent = () => {
   const navigate = useNavigate()
