@@ -1,12 +1,25 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import img from '../../assets/images/logo.svg'
 import './Navbar.css'
 
 export const Navbar: FunctionComponent = () => {
   const navigate = useNavigate()
+  const navRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    if (!navRef.current) return
+    window.onscroll = () => {
+      console.log('here', window.pageYOffset)
+      if (window.pageYOffset >= 115) {
+        navRef.current!.classList.add('nav-full')
+      } else {
+        navRef.current!.classList.remove('nav-full')
+      }
+    }
+  }, [navRef.current])
+
   return (
-    <div className="top-nav ps-3 text-white fixed-top pt-4">
+    <div className="top-nav ps-3 text-white fixed-top pt-4" ref={navRef}>
       <div className="d-flex gap-3 gap-md-5 align-items-center pb-2">
         <div className="d-inline logo">
           <button className="bg-transparent border-0" onClick={() => navigate('/')}>
