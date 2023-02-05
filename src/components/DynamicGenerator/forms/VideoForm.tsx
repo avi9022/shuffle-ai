@@ -1,15 +1,12 @@
-import { FunctionComponent, useState } from 'react'
-import { TextAreaInput } from '../../Input/TextAreaInput'
-import { TextInput } from '../../Input/TextInput'
+import { FunctionComponent, useState } from "react";
+import { useRecoilState } from "recoil";
+import { videoFormValuesAtom } from "../../../state/atoms/generetionForms";
+import { TextAreaInput } from "../../Input/TextAreaInput";
+import { TextInput } from "../../Input/TextInput";
 
 export const VideoForm: FunctionComponent = () => {
-  const [videoFormValues, setVideoFormValues] = useState<{
-    songName: string
-    lyrics: string
-  }>({
-    songName: '',
-    lyrics: '',
-  })
+  const [videoFormValues, setVideoFormValues] =
+    useRecoilState(videoFormValuesAtom);
 
   return (
     <div>
@@ -19,7 +16,10 @@ export const VideoForm: FunctionComponent = () => {
         placeholder="Blue led"
         value={videoFormValues.songName}
         onChange={(ev) => {
-          setVideoFormValues((prevState) => ({ ...prevState, songName: ev.target.value }))
+          setVideoFormValues((prevState) => ({
+            ...prevState,
+            songName: ev.target.value,
+          }));
         }}
       />
       <TextAreaInput
@@ -28,9 +28,12 @@ export const VideoForm: FunctionComponent = () => {
         value={videoFormValues.lyrics}
         placeholder="My new single Blue led is out bla bla bla"
         onChange={(ev) => {
-          setVideoFormValues((prevState) => ({ ...prevState, lyrics: ev.target.value }))
+          setVideoFormValues((prevState) => ({
+            ...prevState,
+            lyrics: ev.target.value,
+          }));
         }}
       />
     </div>
-  )
-}
+  );
+};

@@ -1,22 +1,13 @@
-import { FunctionComponent, useState } from 'react'
-import { DateInput } from '../../Input/DateInput'
-import { TextAreaInput } from '../../Input/TextAreaInput'
-import { TextInput } from '../../Input/TextInput'
+import { FunctionComponent, useState } from "react";
+import { useRecoilState } from "recoil";
+import { postFormValuesAtom } from "../../../state/atoms/generetionForms";
+import { DateInput } from "../../Input/DateInput";
+import { TextAreaInput } from "../../Input/TextAreaInput";
+import { TextInput } from "../../Input/TextInput";
 
 export const PostForm: FunctionComponent = () => {
-  const [postFormValues, setPostFormValues] = useState<{
-    songName: string
-    dateOfRelease: string
-    genre: string
-    description: string
-    tone: string
-  }>({
-    songName: '',
-    dateOfRelease: '',
-    genre: '',
-    description: '',
-    tone: '',
-  })
+  const [postFormValues, setPostFormValues] =
+    useRecoilState(postFormValuesAtom);
 
   return (
     <div>
@@ -26,7 +17,10 @@ export const PostForm: FunctionComponent = () => {
         placeholder="Blue led"
         value={postFormValues.songName}
         onChange={(ev) => {
-          setPostFormValues((prevState) => ({ ...prevState, songName: ev.target.value }))
+          setPostFormValues((prevState) => ({
+            ...prevState,
+            songName: ev.target.value,
+          }));
         }}
       />
       <DateInput
@@ -35,7 +29,10 @@ export const PostForm: FunctionComponent = () => {
         placeholder="27th of April"
         value={postFormValues.dateOfRelease}
         onChange={(ev) => {
-          setPostFormValues((prevState) => ({ ...prevState, dateOfRelease: ev.target.value }))
+          setPostFormValues((prevState) => ({
+            ...prevState,
+            dateOfRelease: ev.target.value,
+          }));
         }}
       />
       <TextInput
@@ -44,7 +41,10 @@ export const PostForm: FunctionComponent = () => {
         placeholder="Rock"
         value={postFormValues.genre}
         onChange={(ev) => {
-          setPostFormValues((prevState) => ({ ...prevState, genre: ev.target.value }))
+          setPostFormValues((prevState) => ({
+            ...prevState,
+            genre: ev.target.value,
+          }));
         }}
       />
       <TextAreaInput
@@ -53,7 +53,10 @@ export const PostForm: FunctionComponent = () => {
         value={postFormValues.description}
         placeholder="My new single Blue led is out bla bla bla"
         onChange={(ev) => {
-          setPostFormValues((prevState) => ({ ...prevState, description: ev.target.value }))
+          setPostFormValues((prevState) => ({
+            ...prevState,
+            description: ev.target.value,
+          }));
         }}
       />
       <TextInput
@@ -62,9 +65,12 @@ export const PostForm: FunctionComponent = () => {
         placeholder="Friendly"
         value={postFormValues.tone}
         onChange={(ev) => {
-          setPostFormValues((prevState) => ({ ...prevState, tone: ev.target.value }))
+          setPostFormValues((prevState) => ({
+            ...prevState,
+            tone: ev.target.value,
+          }));
         }}
       />
     </div>
-  )
-}
+  );
+};
