@@ -1,8 +1,9 @@
-import { FunctionComponent } from 'react'
-import { DynamicGenerator } from '../../components/DynamicGenerator/DynamicGenerator'
-import { GeneratorSideNav } from '../../components/GeneratorSideNav/GeneratorSideNav'
-
-import './Generator.css'
+import { FunctionComponent } from "react";
+import { DynamicGenerator } from "../../components/DynamicGenerator/DynamicGenerator";
+import { DynamicContent } from "../../components/GeneratedContent/DynamicContent";
+import { GeneratedPostContent } from "../../components/GeneratedContent/GeneratedPostContent";
+import { GeneratorSideNav } from "../../components/GeneratorSideNav/GeneratorSideNav";
+import "./Generator.css";
 
 export const Generator: FunctionComponent = () => {
   return (
@@ -14,8 +15,10 @@ export const Generator: FunctionComponent = () => {
         <div className="col-12 col-md-6">
           <DynamicGenerator />
         </div>
-        <div className="col-12 col-md-4 p-4">text</div>
+        <div className="col-4">
+          <DynamicContent />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
