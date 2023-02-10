@@ -1,20 +1,13 @@
-import { FunctionComponent, useState } from 'react'
-import { DateInput } from '../../Input/DateInput'
-import { TextAreaInput } from '../../Input/TextAreaInput'
-import { TextInput } from '../../Input/TextInput'
+import { FunctionComponent, useState } from "react";
+import { useRecoilState } from "recoil";
+import { coverFormValuesAtom } from "../../../state/atoms/generetionForms";
+import { DateInput } from "../../Input/DateInput";
+import { TextAreaInput } from "../../Input/TextAreaInput";
+import { TextInput } from "../../Input/TextInput";
 
 export const CoverForm: FunctionComponent = () => {
-  const [coverFormValues, setCoverFormValues] = useState<{
-    songName: string
-    dateOfRelease: string
-    genre: string
-    description: string
-  }>({
-    songName: '',
-    dateOfRelease: '',
-    genre: '',
-    description: '',
-  })
+  const [coverFormValues, setCoverFormValues] =
+    useRecoilState(coverFormValuesAtom);
 
   return (
     <div>
@@ -24,7 +17,10 @@ export const CoverForm: FunctionComponent = () => {
         placeholder="Blue led"
         value={coverFormValues.songName}
         onChange={(ev) => {
-          setCoverFormValues((prevState) => ({ ...prevState, songName: ev.target.value }))
+          setCoverFormValues((prevState) => ({
+            ...prevState,
+            songName: ev.target.value,
+          }));
         }}
       />
       <DateInput
@@ -33,7 +29,10 @@ export const CoverForm: FunctionComponent = () => {
         placeholder="27th of April"
         value={coverFormValues.dateOfRelease}
         onChange={(ev) => {
-          setCoverFormValues((prevState) => ({ ...prevState, dateOfRelease: ev.target.value }))
+          setCoverFormValues((prevState) => ({
+            ...prevState,
+            dateOfRelease: ev.target.value,
+          }));
         }}
       />
       <TextInput
@@ -42,7 +41,10 @@ export const CoverForm: FunctionComponent = () => {
         placeholder="Rock"
         value={coverFormValues.genre}
         onChange={(ev) => {
-          setCoverFormValues((prevState) => ({ ...prevState, genre: ev.target.value }))
+          setCoverFormValues((prevState) => ({
+            ...prevState,
+            genre: ev.target.value,
+          }));
         }}
       />
       <TextAreaInput
@@ -51,9 +53,12 @@ export const CoverForm: FunctionComponent = () => {
         value={coverFormValues.description}
         placeholder="My new single Blue led is out bla bla bla"
         onChange={(ev) => {
-          setCoverFormValues((prevState) => ({ ...prevState, description: ev.target.value }))
+          setCoverFormValues((prevState) => ({
+            ...prevState,
+            description: ev.target.value,
+          }));
         }}
       />
     </div>
-  )
-}
+  );
+};
