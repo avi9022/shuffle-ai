@@ -8,13 +8,14 @@ import { FiEdit2 } from "react-icons/fi";
 import { RiFileCopyLine } from "react-icons/ri";
 import { useRecoilValue } from "recoil";
 import {
-  currentUserGenerationAtom,
+  userPostGenerationsAtom,
   currentUserVideoGenerationAtom,
 } from "../../state/atoms/userGenerations";
+import { GeneratedCoverContent } from "./GeneratedCoverContent";
 
 export const DynamicContent: FunctionComponent = () => {
   const { type } = useParams();
-  const userGeneration = useRecoilValue(currentUserGenerationAtom);
+  const userGeneration = useRecoilValue(userPostGenerationsAtom);
   const userVideoGeneration = useRecoilValue(currentUserVideoGenerationAtom);
   const getContent = () => {
     switch (type) {
@@ -27,10 +28,10 @@ export const DynamicContent: FunctionComponent = () => {
       //   case generationType.youtube:
       //   case generationType.tiktok:
       //     return <ThumbnailForm />;
-      //   case generationType.cover:
-      //     return <CoverForm />;
+      case generationType.cover:
+        return <GeneratedCoverContent />;
       default:
-        return <>Choose what to generate</>;
+        return <></>;
     }
   };
 

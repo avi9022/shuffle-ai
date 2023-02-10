@@ -1,16 +1,27 @@
 import { FunctionComponent } from "react";
 import { useParams } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { generatePost, generateVideo } from "../../shared/services/generation";
 import {
+  generateCover,
+  generatePost,
+  generateVideo,
+} from "../../shared/services/generation";
+import {
+  coverFormValuesAtom,
   postFormValuesAtom,
   videoFormValuesAtom,
 } from "../../state/atoms/generetionForms";
 import {
-  currentUserGenerationAtom,
   currentUserVideoGenerationAtom,
+  isSetUserGenerationsAtom,
+  userCoverGenerationsAtom,
+  userPostGenerationsAtom,
 } from "../../state/atoms/userGenerations";
-import { generationType } from "../../types/generation";
+import {
+  GeneratedCoverContent,
+  GeneratedPostContent,
+  generationType,
+} from "../../types/generation";
 import { CoverForm } from "./forms/CoverForm";
 import { PostForm } from "./forms/PostForm";
 import { ThumbnailForm } from "./forms/ThumbnailForm";
@@ -19,8 +30,11 @@ import { VideoForm } from "./forms/VideoForm";
 export const DynamicGenerator: FunctionComponent = () => {
   const { type } = useParams();
   const postFormValues = useRecoilValue(postFormValuesAtom);
+  const coverFormValues = useRecoilValue(coverFormValuesAtom);
   const videoFormValues = useRecoilValue(videoFormValuesAtom);
-  const setCurrentUserGeneration = useSetRecoilState(currentUserGenerationAtom);
+  const setUserPostGeneration = useSetRecoilState(userPostGenerationsAtom);
+  const setUserCoverGeneration = useSetRecoilState(userCoverGenerationsAtom);
+  const isSetUserGenerations = useSetRecoilState(isSetUserGenerationsAtom);
   const setCurrentUserVideoGeneration = useSetRecoilState(
     currentUserVideoGenerationAtom
   );
@@ -44,14 +58,22 @@ export const DynamicGenerator: FunctionComponent = () => {
   const onGenerate = async (ev: React.FormEvent) => {
     ev.preventDefault();
     console.log(ev.currentTarget.textContent, type);
+    isSetUserGenerations(true);
     if (type === "post") {
-      const generatedPost = await generatePost(postFormValues);
-      setCurrentUserGeneration(generatedPost);
-    } else if (type === "video" || type ==="video916") {
-      
+      const generatedPost = (await generatePost(
+        postFormValues
+      )) as GeneratedPostContent;
+      setUserPostGeneration(generatedPost);
+    } else if (type === "video" || type === "video916") {
       const generatedVideo = await generateVideo(videoFormValues);
       setCurrentUserVideoGeneration(generatedVideo);
+    } else if (type === "cover") {
+      const generatedCover = (await generateCover(
+        coverFormValues
+      )) as GeneratedCoverContent;
+      setUserCoverGeneration(generatedCover);
     }
+    isSetUserGenerations(false);
   };
 
   return (

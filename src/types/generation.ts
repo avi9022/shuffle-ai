@@ -23,6 +23,13 @@ export interface PostFormGenerationValues {
   tone: string;
 }
 
+export interface CoverFormGenerationValues {
+  songName: string;
+  dateOfRelease: string;
+  genre: string;
+  description: string;
+}
+
 export interface VideoFormGenerationValues {
   songName?: string;
   lyrics?: string;
@@ -31,6 +38,11 @@ export interface VideoFormGenerationValues {
 export interface GeneratedPostContent {
   text?: string;
 }
+
+export interface GeneratedCoverContent {
+  url?: string;
+}
+
 export interface GeneratedVideoContent {
   url?: string;
 }
