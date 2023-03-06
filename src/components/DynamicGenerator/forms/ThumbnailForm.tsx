@@ -1,5 +1,6 @@
 import { FunctionComponent, useState } from 'react'
 import { FileTypes } from '../../../types/file-types'
+import { Button } from '../../Button/Button'
 import { FileInput } from '../../Input/FileInput'
 import { TextInput } from '../../Input/TextInput'
 
@@ -18,7 +19,6 @@ export const ThumbnailForm: FunctionComponent = () => {
     <div>
       <TextInput
         label="The title of the thumbnail"
-        inputClassName="bg-transparent border-gray text-white"
         placeholder='Cover for "With you"'
         value={thumbnailFormValues.title}
         onChange={(ev) => {
@@ -32,21 +32,12 @@ export const ThumbnailForm: FunctionComponent = () => {
         onChange={(ev) => setThumbnailFormValues((prevState) => ({ ...prevState, photo: ev.target.files?.[0] || null }))}
       >
         <div className="d-flex gap-2 align-items-center">
-          <TextInput
-            inputClassName="bg-transparent border-gray text-white"
-            className="flex-grow-1"
-            placeholder={thumbnailFormValues.photo?.name || 'Upload photo...'}
-            value={thumbnailFormValues.title}
-            disabled
-          />
-          <p className="btn h-100" style={{ backgroundColor: '#139ebc' }}>
-            upload
-          </p>
+          <TextInput className="flex-grow-1 mb-0" placeholder={thumbnailFormValues.photo?.name || 'Upload photo...'} value={thumbnailFormValues.title} disabled />
+          <Button btnType="brand">upload</Button>
         </div>
       </FileInput>
       <TextInput
         label="Genre"
-        inputClassName="bg-transparent border-gray text-white"
         placeholder='Cover for "With you"'
         value={thumbnailFormValues.genre}
         onChange={(ev) => {

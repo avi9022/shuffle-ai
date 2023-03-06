@@ -1,21 +1,12 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
-import { RecoilRoot } from "recoil";
-import { Navbar } from "./components/NavBar/Navbar";
-import { Generator } from "./pages/Generator/Generator";
-import { Home } from "./pages/Home/Home";
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
+import { Generator } from './pages/Generator/Generator'
+import { Home } from './pages/Home/Home'
 
 function App() {
   return (
     <RecoilRoot>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/generator" element={<Generator />} />
@@ -23,7 +14,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
-  );
+  )
 }
 
-export default App;
+export default App
