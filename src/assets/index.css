@@ -1,15 +1,52 @@
+@import url('./fonts/fonts.css');
+
 * {
   --nav-height: 115px;
   --nav-full-bg: rgba(50, 48, 62, 0.95);
   --side-nav-bg: #34363a;
+  --light-gray: #f2f3f7;
+  --text-grey: #92949e;
+  --dark-blue: #2a3460;
+  --result-gray: #f6f7f9;
 }
 
 body {
-  font-family: Sans-serif;
+  font-family: almoni, sans-serif;
+}
+
+/* COLOR */
+
+.bg-light-gray {
+  background-color: var(--light-gray);
+}
+.text-grey {
+  color: var(--text-grey);
+}
+.border-gray {
+  border-color: #5d5d5d;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.h-100vh {
+  height: 100vh;
 }
 
 .font-weight-bold {
   font-weight: 700;
+}
+
+.fs-sm {
+  font-size: 0.8rem;
+}
+
+.fs-md {
+  font-size: 1rem;
+}
+.fs-lg {
+  font-size: 1.2rem;
 }
 
 .fs-xlg {
@@ -24,14 +61,20 @@ body {
   border-radius: 0.7rem;
 }
 
-.border-gray {
-  border-color: #5d5d5d;
-}
-
 .resize-none {
   resize: none;
 }
 
 .placeholder-gray::placeholder {
   color: #5d5d5d;
+}
+
+.before-arrow::before {
+  content: '←';
+  padding-inline-end: 0.5rem;
+  font-size: 1rem;
+}
+
+.min-h-50vh {
+  min-height: 50vh;
 }

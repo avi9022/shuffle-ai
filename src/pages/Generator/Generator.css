@@ -1,11 +1,13 @@
-.generator-container {
-  padding-top: var(--nav-height);
-  height: 100vh;
-  background-image: url('../../assets/images/hero.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .side-nav {
   background-color: var(--side-nav-bg);
+}
+
+.introduction-container {
+  background-image: url('../../assets/images/colorful-bg@2x.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.new-shuffle-btn {
+  margin: -0.5rem;
 }
