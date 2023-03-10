@@ -36,7 +36,7 @@ export const Generator: FunctionComponent = () => {
             <div className="flex-grow-1 bg-white border rounded p-5 shadow h-100">
               <DynamicGenerator />
             </div>
-            <div className=" bg-white border rounded p-4 shadow w-40">
+            <div className="flex-grow-1 bg-white border rounded p-4 shadow w-40">
               <DynamicContent />
             </div>
           </div>

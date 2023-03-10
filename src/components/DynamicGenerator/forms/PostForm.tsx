@@ -1,12 +1,14 @@
-import { FunctionComponent, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { postFormValuesAtom } from '../../../state/atoms/generetionForms'
-import { DateInput } from '../../Input/DateInput'
-import { TextAreaInput } from '../../Input/TextAreaInput'
-import { TextInput } from '../../Input/TextInput'
+import { FunctionComponent, useState } from "react";
+import { useRecoilState } from "recoil";
+import { postFormValuesAtom } from "../../../state/atoms/generetionForms";
+import { DateInput } from "../../Input/DateInput";
+import { SelectInput } from "../../Input/SelectInput";
+import { TextAreaInput } from "../../Input/TextAreaInput";
+import { TextInput } from "../../Input/TextInput";
 
 export const PostForm: FunctionComponent = () => {
-  const [postFormValues, setPostFormValues] = useRecoilState(postFormValuesAtom)
+  const [postFormValues, setPostFormValues] =
+    useRecoilState(postFormValuesAtom);
 
   return (
     <div>
@@ -18,7 +20,7 @@ export const PostForm: FunctionComponent = () => {
           setPostFormValues((prevState) => ({
             ...prevState,
             songName: ev.target.value,
-          }))
+          }));
         }}
       />
       <div className="d-flex w-100 gap-3">
@@ -31,44 +33,61 @@ export const PostForm: FunctionComponent = () => {
             setPostFormValues((prevState) => ({
               ...prevState,
               dateOfRelease: ev.target.value,
-            }))
+            }));
           }}
         />
-        <TextInput
+        <SelectInput
           label="Genre"
-          placeholder="Rock"
           className="flex-grow-1"
           value={postFormValues.genre}
           onChange={(ev) => {
             setPostFormValues((prevState) => ({
               ...prevState,
               genre: ev.target.value,
-            }))
+            }));
           }}
-        />
+        >
+          {[
+            { label: "Rock", value: "rock" },
+            { label: "Pop", value: "pop" },
+          ].map((item) => {
+            return (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            );
+          })}
+        </SelectInput>
       </div>
       <TextAreaInput
         label="Tell us about your single"
         value={postFormValues.description}
-        placeholder="My new single Blue led is out bla bla bla"
+        placeholder="My new single Blue led is out"
         onChange={(ev) => {
           setPostFormValues((prevState) => ({
             ...prevState,
             description: ev.target.value,
-          }))
+          }));
         }}
       />
-      <TextInput
+      <SelectInput
         label="Select tone"
-        placeholder="Friendly"
         value={postFormValues.tone}
         onChange={(ev) => {
           setPostFormValues((prevState) => ({
             ...prevState,
             tone: ev.target.value,
-          }))
+          }));
         }}
-      />
+      >
+        {[{ label: "Friendly", value: "friendly" }].map((item) => {
+          return (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          );
+        })}
+      </SelectInput>
     </div>
-  )
-}
+  );
+};
