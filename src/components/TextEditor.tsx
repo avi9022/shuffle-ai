@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useEffect } from "react";
+import { FunctionComponent, useRef, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isEditUserGenerationsAtom } from "../state/atoms/userGenerations";
 
@@ -13,7 +13,7 @@ export const TextEditor: FunctionComponent<TextEditorProps> = ({
 }) => {
   const isEditing = useRecoilValue(isEditUserGenerationsAtom);
   const divRef = useRef<HTMLDivElement>(null);
-  const selRef = useRef<Selection | null>(null);
+  const [range, setRange] = useState<Range | null>(null);
 
   useEffect(() => {
     const div = divRef.current;
@@ -22,41 +22,54 @@ export const TextEditor: FunctionComponent<TextEditorProps> = ({
       return;
     }
 
-    const sel = window.getSelection();
-    if (!sel) {
+    // Save the current selection range
+    const handleSelectionChange = () => {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0) {
+        setRange(sel.getRangeAt(0));
+      }
+    };
+
+    document.addEventListener("selectionchange", handleSelectionChange);
+
+    // Update range state when content prop changes
+    setRange(null);
+
+    return () => {
+      document.removeEventListener("selectionchange", handleSelectionChange);
+    };
+  }, [content]);
+
+  useEffect(() => {
+    const div = divRef.current;
+
+    if (!div) {
       return;
     }
 
-    // Select the last child node of the div
-    let lastChildNode: ChildNode | null = div.lastChild;
-    while (lastChildNode && lastChildNode.nodeType !== Node.TEXT_NODE) {
-      lastChildNode = lastChildNode.previousSibling;
+    // Initialize range state with current selection range
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      setRange(sel.getRangeAt(0));
     }
-    const range = document.createRange();
-    if (lastChildNode) {
-      range.setStart(lastChildNode, lastChildNode.textContent?.length || 0);
-    } else {
-      range.setStart(div, 0);
-    }
-    range.collapse(true);
-    sel.removeAllRanges();
-    sel.addRange(range);
 
-    // Add event listener for input to update selection range
-    const handleInput = () => {
+    // Save the current selection range
+    const handleSelectionChange = () => {
       const sel = window.getSelection();
-      if (sel) {
-        selRef.current = sel;
+      if (sel && sel.rangeCount > 0) {
+        setRange(sel.getRangeAt(0));
       }
-      onSetValue(div.innerText);
     };
 
-    div.addEventListener("input", handleInput);
+    document.addEventListener("selectionchange", handleSelectionChange);
+
+    // Update range state when content prop changes
+    setRange(null);
 
     return () => {
-      div.removeEventListener("input", handleInput);
+      document.removeEventListener("selectionchange", handleSelectionChange);
     };
-  }, [content, divRef, onSetValue]);
+  }, [content]);
 
   return (
     <div
@@ -64,8 +77,7 @@ export const TextEditor: FunctionComponent<TextEditorProps> = ({
       style={{ outline: "none" }}
       suppressContentEditableWarning={true}
       contentEditable={!!isEditing}
-    >
-      {content}
-    </div>
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   );
 };
